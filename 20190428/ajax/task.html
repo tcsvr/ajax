@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>task</title>
+    <script src="jquery-1.11.3.min.js"></script>
+
+</head>
+<body>
+
+    <input type="button" value="是" id="but">
+    
+</body>
+</html>
+<script src="myajax.js"></script>
+<script>
+
+
+$('#but').click(function(){
+
+        var sf = $('#but').val();
+
+        if(sf=="是"){
+            $('#but').val('否');
+            
+            myAjax('data.php?t=0',function(result){
+                alert(result);
+            },function(f){
+                alert(f);
+            });
+
+        }else{
+            $('#but').val('是');
+            myAjax('data.php?t=1',function(result){
+                alert(result);
+            },function(f){
+                alert(f);
+            });
+
+        }
+})
+
+
+
+
+</script>

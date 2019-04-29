@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>省市联动/JSON</title>
+	<script src="jquery-1.11.3.min.js"></script>
+
+</head>
+<body>
+	省：
+	<select name="pro" id="pro">
+		<option value="0">请选择</option>
+	</select>
+	市：
+	<select name="city" id="city">
+		<option value="0">请选择</option>
+	</select>
+	区：
+	<select name="reg" id="reg">
+		<option value="0">请选择</option>
+	</select>
+</body>
+</html>
+<script>
+	
+	$.get('data.php',function(result){
+		for(i in result){
+			$('#pro').append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>')
+		}
+	},'json')
+
+	$('#pro').change(function(){
+		 var id = $(this).val();
+		 $.get('data.php',{pid:id},function(result){
+			$('#city').append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>')
+		 })
+	})
+
+
+	// $.get('data.php',function(result){
+	// 	for(i in result){
+	// 		document.write(result[i].n_id+'==='+result[i].n_name+'==='+result[i].n_link+'<br>')
+	// 	}
+	// },'json');
+
+	// var json ={"a":"aa","b":"bb"};
+
+	// alert(json.a);
+</script>

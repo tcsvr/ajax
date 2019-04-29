@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+    <style>
+    table{
+        margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <h1>测试 ajax</h1>
+    <input type="button" value="点击" id="but">
+    <br>
+    <br>
+    <table id="table1" border="1" width="50%" align="cevter">
+        <tr>
+            <th>编号</th>
+            <th>导航名称</th>
+            <th>导航链接</th>
+            <th>是否显示</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>首页</td>
+            <td>index.html</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>案列列表</td>
+            <td>case_list.html</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>关于我们</td>
+            <td>about.html</td>
+            <td>1</td>
+        </tr>
+        
+    </table>
+    <br>
+    <br>
+    <br>
+    <table id="table2" border="1" width="50%" align="cevter">
+        <tr>
+            <th>编号</th>
+            <th>导航名称</th>
+            <th>导航链接</th>
+            <th>是否显示</th>
+        </tr>
+    </table>    
+</body>
+</html>
+<script>
+
+    myajax('date.txt',function(result){
+        alert(result);
+    },function(f){
+        alert(f);
+    });
+    //回调函数
+    //回调函数
+    function myajax(url,fnSuccess,fnFailed){
+    if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+        var ajax =new XMLHttpRequest();
+    }else{// code for IE6, IE5
+        var ajax =new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //创建 ajax 对象
+    // var ajax = new XMLHttpRequest();
+    // alert(ajax);
+
+    //链接服务器get
+    ajax.open('get',url,true);
+    //发起请求get
+    ajax.send();
+
+    //链接服务器 post
+    // ajax.open('post','date.php?t='+Math.random(),true);
+    // 必须加头信息
+    // ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    //发起请求 post 传参
+    // ajax.send('id=1&caid=2');
+
+    //接收信息
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState == 4 ){
+            if(ajax.status == 200){
+                fnSuccess(ajax.responseText);
+            }else{
+                if(fnFailed){//第三个参数有传，我才执行
+                    fnFailed(ajax.status+'文找到页面');
+                }
+            }
+        }
+    } 
+}
+</script>
+<script src="myajax.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    $('#table1').children('tr').children('td')
+</script>

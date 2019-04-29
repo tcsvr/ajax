@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src="jquery-1.11.3.min.js"></script>
+	<style>
+	img{
+		position: absolute;
+		top:0px; left:50%;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<img src="icon/loading2.gif" alt="">
+	<input type="button" value="点击" id="but">
+	<table id="table2" border="1" width="50%" align="center">
+		<tr>
+			<th>编号</th>
+			<th>导航名称</th>
+			<th>导航链接</th>
+			<th>是否显示</th>
+		</tr>
+	</table>
+</body>
+</html>
+<script>
+
+// $('#but').click(function(){});
+// $.get('data.php',{a:1,b:2},function(){},'json/xml');
+
+
+$('#but').click(function(){
+	// 点击时显示加载图标 loading图片
+	$('img').css('display','inline');
+
+	$.get('data.php',function(result){
+		// 成功后把小图片变成对号,再渐渐隐藏消失
+		$('img').attr('src','icon/success.jpg').fadeOut(1000);
+
+		$('#table2').empty().append('<tr><th>编号</th><th>导航名称</th><th>导航链接</th><th>是否显示</th></tr>');
+
+
+		$(result).find('nav').children().each(function(){
+			var id = ($(this).children('n_id').text());
+			var name = ($(this).children('n_name').text());
+			var link = ($(this).children('n_link').text());
+			var isshow = ($(this).children('n_isshow').text());
+
+			$('#table2').append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+link+'</td><td>'+isshow+'</td></tr>');			
+		});
+	},'xml');
+});
+
+
+
+
+/*var i = 0;
+$('#but').click(function(){
+	$.get('test.xml',function(result){
+		$(result).find('nav').children().each(function(){
+			$('#table2').append('<tr></tr>');
+			i = $(this).index()+1;
+			$(this).children().each(function(){
+				$('#table2 tr').eq(i).append('<td>'+$(this).text()+'</td>');
+			});
+		});
+	});
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*$.get('data.php',{page:1,caid:2},function(result){
+	alert(result);
+});
+*/</script>

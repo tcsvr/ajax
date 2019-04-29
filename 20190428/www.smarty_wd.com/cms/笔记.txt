@@ -1,0 +1,49 @@
+案例分类管理页面
+category_list.php  列表页
+category_add.php   添加页
+category_edit.php  （修改页）编辑页
+category_del.php   删除页
+案例管理页面
+case_list.php  列表页
+case_add.php   添加页
+case_edit.php  （修改页）编辑页
+case_del.php   删除页
+
+做后台基本都是从列表页开始做。list
+	只查询可以看得清楚的数据。列表页不能做放简介和详情。一般都是标题
+再做添加页    add
+再做修改页    edit
+最后做删除页  del
+
+
+
+
+
+后台都是表单的处理
+只要是表单的操作逻辑代码就要思考这些带是提交前执行还是提交后执行
+只要有看到form标签就要把里面的#删掉
+如果有文件上传域的，要看form标签里面有没有上传控件 enctype=""
+修改表单结构
+检查表单元素的name名
+
+
+0  列表
+1  添加
+2  修改
+4  单个删除
+5  多个删除
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

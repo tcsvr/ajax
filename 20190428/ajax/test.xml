@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<nav>
+	<item>
+		<n_id>1</n_id>
+		<n_name>首页123</n_name>
+		<n_link>index.html</n_link>
+		<n_isshow>1</n_isshow>
+	</item>
+	<item>
+		<n_id>2</n_id>
+		<n_name>案例展示123</n_name>
+		<n_link>case_list.html</n_link>
+		<n_isshow>1</n_isshow>
+	</item>
+	<item>
+		<n_id>3</n_id>
+		<n_name>关于我们123</n_name>
+		<n_link>about.html</n_link>
+		<n_isshow>1</n_isshow>
+	</item>
+</nav>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src="jquery-1.11.3.min.js"></script>
+</head>
+<style>
+	img{
+		display:none;
+		position: absolute;
+		left: 50%;
+		top: 10%;
+	}
+</style>
+<body>
+	<img src="icon/loading2.gif" alt="">
+		<input type="button" value="点击" id="but">
+
+	<table id="table2" border="1" width="50%" align="cevter">
+			<tr>
+				<th>编号</th>
+				<th>导航名称</th>
+				<th>导航链接</th>
+				<th>是否显示</th>
+			</tr>
+		</table>    
+	
+
+
+</body>
+</html>
+<script>
+	$('#but').click(function(){
+		// 点击时加载显示图表
+		$('img').css('display','inline');
+
+		$.get('data.php',function(result){
+
+			$(result).find('nav').children().each(function(){
+				$('img').attr('src','icon/success.jpg');
+				$('#table2').empty().append('<tr><th>编号</th><th>导航名称</th><th>导航链接</th><th>是否显示</th></tr>');
+				$(this).children().each(function(){
+					var id = $(this).children('n_id').text();
+					var name = $(this).children('n_name').text();
+					var link = $(this).children('n_link').text();
+					var isshow = $(this).children('n_isshow').text();
+
+					$('#table2').append('<tr><td>'+id+'</td><td>'+name+'</td><td>'+link+'</td><td>'+isshow+'</td><tr>');
+					
+				});
+				
+			});
+		},'xml');
+		
+	});
+
+	// $('#but').click(function(){
+	// 	$.get('test.xml',function(result){
+	// 		$(result).find('nav').children().each(function(){
+				
+	// 			$(this).children().each(function(){
+	// 				'<td>'+$(this).text()+'</td>';
+	// 			});
+
+	// 		});
+	// 	});
+		
+	// });
+
+
+
+// $.get('data.php',{page:1,caid:2},function(result){
+// 	alert(result);
+// });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

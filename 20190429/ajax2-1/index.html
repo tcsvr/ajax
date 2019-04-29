@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<h2 isshow='1'>是</h2>
+	
+
+</body>
+</html>
+<script src="myajax.js"></script>
+<script>
+
+var i = 1;
+$('h2').click(function(){
+	if($('h2').attr('isshow') == '1'){
+		i = 0;
+		$('h2').text('否')
+		$('h2').attr('isshow',i)
+
+	}else{
+		i = 1;
+		$('h2').text('是')
+		$('h2').attr('isshow',i)
+	}
+
+	$.get('data.php',{isshow:i},function(result){
+		alert(result);
+	});
+	
+
+
+	/*myAjax('data.php?isshow='+i,function(result){
+		alert(result);
+	});*/
+});
+
+
+
+
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>省市联动</title>
+	<script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	省：
+	<select name="pro" id="pro">
+		<option value="0">请选择</option>
+	</select>
+	市：
+	<select name="city" id="city">
+		<option value="0">请选择</option>
+	</select>
+	区：
+	<select name="reg" id="reg">
+		<option value="0">请选择</option>
+	</select>
+
+	<hr>
+	<nav>
+		<a href="javascript:;" >分类1</a>
+		<a href="javascript:;" >分类1</a>
+		<a href="javascript:;" >分类1</a>
+		<a href="javascript:;" >分类1</a>
+		<a href="javascript:;" >分类1</a>
+	</nav>
+	
+</body>
+</html>
+<script>
+
+city('data.php',{pid:1},'#pro');
+
+
+
+
+$('#pro').change(function(){
+	var id = $(this).val();
+	city('data.php',{pid:id},'#city')
+});
+
+$('#city').change(function(){
+	var id = $(this).val();
+	city('data.php',{pid:id},'#reg')
+});
+
+
+
+
+
+
+
+
+
+
+
+
+function city(url,param,selects){
+	$.get(url,param,function(result){
+		$(selects).empty();
+		$(selects).append('<option value="0">请选择</option>');
+		for(i in result){
+			$(selects).append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>');
+		}
+	},'json');
+}
+
+
+
+
+/*
+$.get('data.php',{pid:1},function(result){
+	// result[0].region_name
+	for(i in result){
+		$('#pro').append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>');
+	}
+},'json');
+
+
+
+$('#pro').change(function(){
+	var id = $(this).val();
+	$.get('data.php',{pid:id},function(result){
+		$('#city').empty();
+		$('#city').append('<option value="0">请选择</option>');
+		for(i in result){
+			$('#city').append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>');
+		}
+	},'json');
+});
+
+$('#city').change(function(){
+	var id = $(this).val();
+	$.get('data.php',{pid:id},function(result){
+		$('#reg').empty();
+		$('#reg').append('<option value="0">请选择</option>');
+		for(i in result){
+			$('#reg').append('<option value="'+result[i].region_id+'">'+result[i].region_name+'</option>');
+		}
+	},'json');
+});
+*/
+
+	
+
+</script>

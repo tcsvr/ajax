@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+	<script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<input type="button" value="点击" id="but">
+	<table id="table2" border="1" width="50%" align="center">
+		<tr>
+			<th>编号</th>
+			<th>导航名称</th>
+			<th>导航链接</th>
+			<th>是否显示</th>
+		</tr>
+	</table>
+	
+</body>
+</html>
+<script>
+	$('#but').click(function(){
+		$.get('data.php',function(result){
+			$('#table2').append(result);
+		});
+	});
+
+	// JS里面能用点的地方都可以用方括号的写法
+	// var str = '{"a":"aa"}';
+	// alert(eval('('+str+')'));
+
+	// 复合类型  数组 对象
+	// var arr = [1,'a',true,{"a":"abc"}];
+	// alert(arr[3].a);
+
+
+	// json的语法 {"键1":"值1","键2":"值2","键3":"值3"}
+
+	// var json = {"a":"aa","b":"bb"};
+	// var json = {"a":[1,2,3,4,5,6],"b":"bb"};
+
+	// $nav = array(  数据库模拟数据
+	// 	array('n_id'=>1,'n_name'=>'首页','n_link'=>'xxx.xx'),
+	// 	array('n_id'=>2,'n_name'=>'案例','n_link'=>'xxx.xx'),
+	// 	array('n_id'=>3,'n_name'=>'关于','n_link'=>'xxx.xx'),
+	// 	);
+	// $nav[0]['n_id']
+	
+	/*var json = [
+		{"n_id":"1","n_name":"首页","n_link":"xxx1.xxx"},
+		{"n_id":"2","n_name":"案例","n_link":"xxx2.xxx"},
+		{"n_id":"3","n_name":"关于","n_link":"xxx3.xxx"}
+	];*/
+
+	/*$.get('data.php',function(result){
+		// alert(eval('('+result+')'));
+		for(i in result){
+			document.write(result[i].n_id+'==='+result[i].n_name+'==='+result[i].n_link+'<br>');
+		}
+	},'json');*/
+
+	/*for(i in json){
+		document.write(json[i].n_id+'==='+json[i].n_name+'==='+json[i].n_link+'<br>');
+	}*/
+
+</script>

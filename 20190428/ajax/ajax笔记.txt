@@ -1,0 +1,71 @@
+ajax   异步  js  and  XML 的技术   不是新语言，是现有技术的合成（html,css,js ....）
+
+正常人     异步（事情一件一件做）            同步（几件事情一起做）
+编程人     异步 才是 同步                    同步才是异步
+
+js       javascript
+and      和
+XML      XML    可扩展（）标记语言
+
+
+可扩展（就是自己随意定义标签）
+<n_id>1</n_id>
+$nav = array(
+	'n_id'=>'1',
+	'n_name'=>'首页',
+	'n_link'=>'xxx.xx',
+);
+<p>段落</p>  w3c
+<a>链接</a>  w3c
+
+
+
+
+
+<script>
+	// 为了兼容浏览器，所以做判断兼容性
+	if(window.XMLHttpRequest){
+		// 创建ajax对象 兼容除了 IE5  IE6
+		var ajax = new XMLHttpRequest();
+	}else{
+		// 创建ajax对象 兼容IE5  IE6
+		var ajax=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	// 链接服务器 get
+	// ajax.open('get','data.php?t='+Math.random(),true);
+	// 发起请求  get
+	// ajax.send();
+
+
+	// 链接服务器 post
+	ajax.open('post','data.php?t='+Math.random(),true);
+	// 用post传参数一定要加头信息
+	ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	// 发起请求  post传参数
+	ajax.send('id=1&caid=2');
+
+	// 接收信息  ajax 执行过程触发事件
+	ajax.onreadystatechange=function(){
+		//ajax步骤执行完毕,但不一定成功
+		if(ajax.readyState==4){ 
+			//这一步才是确保成功
+			if(ajax.status==200){
+				alert(ajax.responseText);
+			}
+		}
+	}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

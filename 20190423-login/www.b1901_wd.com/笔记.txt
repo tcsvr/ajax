@@ -1,0 +1,191 @@
+wengdo
+	css
+	js
+	images
+	include
+		init.php      初始化文件
+			function.php  函数库
+			config.php    配置文件
+	view
+		common
+			header.html
+			footer.html
+		index.html  
+		about.html
+	index.php  入口文件
+	about.php
+
+分页流程
+// 获取总条数
+$sql = "SELECT COUNT(n_id) AS count FROM wd_news";
+$count = getOne($sql);
+$count = $count['count'];
+
+$total = ceil($count/$limit); // 总页数
+
+$ta = array();
+for($i=1; $i<=$total; $i++){
+	$ta[] = $i;
+}
+// pre($ta);
+
+
+
+<nav>
+	<a href="javascript:;">上一页</a>
+	<?php for($i=1; $i<=$total; $i++){ ?>
+	<a href="?page=<?php echo $i ?>"><?php echo $i ?></a>
+	<?php } ?>
+	<a href="javascript:;">下一页</a>
+</nav>
+
+
+问题：
+我们一个  即是开发者  也是用户（客户）
+
+
+路径的问题
+	拉  读取文件jpg png gif(图片)  http://www/xxx/xxx/a/b/c.jpg
+		js  css 图片
+	放   不存在的  d:///  c：//
+
+http://www.b1901_wd.com/uploads/2019/04/35325354355435.jpg
+
+
+
+传参
+
+报错函数库
+控件
+
+文件上传失败有那些原因
+	路径的问题
+	参数
+	文件有问题
+	看控件
+文件上传失败如何找原因
+	0 print_r($_FIELS);  数据正常
+				数据不正常 没有数据(肯定是控件的问题)  error != 0
+	上传文件局部两个基本条件：1 post   2 enctype=""
+
+
+
+
+文件多了  入口文件4个 category_list  add  edit del   视图文件3个 list  add  edit
+
+
+列表    查
+添加 的思路
+	if($_POST){
+		1 提交后的代码
+		2 判断是否为空if(){}
+
+		3 获取数据 $ca_name = $_POST['ca_name']
+		
+		写SQL
+		$sql = "INSERT INTO wd_case_category (`ca_name`) VALUES ('$ca_name')";
+		执行SQL语句
+		mysql_query($sql);
+		
+	}   
+修改
+	查看原数据  提交前  查询
+
+	if($_POST){
+		修改数据  提交后 修改
+		1 提交后的代码
+		2 判断是否为空if(){}
+
+		3 获取数据 $ca_name = $_POST['ca_name']
+		
+		写SQL
+		$sql = "修改的SQL语句";
+		执行SQL语句
+		mysql_query($sql);
+	}
+
+
+
+有文件上传的添加
+	判断是否为提交
+	判断数据是否为空 （简单的数据  文件有没有上传）
+	获取数据
+		（简单的数据  
+		$c_title = $_POST['xxx'];
+		$c_detail = $_POST['xxx'];
+		$c_isshow = $_POST['xxx'];
+		
+		if（文件真的上传成功）{
+			复杂的数据 文件上传的数据）
+			原图片的路径字符串
+				$images = 文件上传的函数符（param1，param2）
+				$c_img = $images['filename'];
+			缩略图的路径字符串
+				$c_thumb = ???
+		}
+		
+		
+		
+有文件上传的修改
+	查询原数据
+	基本数据  图片数据  缩略图数据
+
+	判断是否为提交  做修改
+	1 判断是否为空 简单的数据
+	2 获取数据   简单的数据
+         	$c_title = $_POST['xxx'];
+		$c_detail = $_POST['xxx'];
+		$c_isshow = $_POST['xxx'];
+	判断是否为文件上传
+	if(有为真){
+	有上传
+		图片数据
+		缩略图数据
+		$img = 
+		$thumb =
+		$sql = "全部字符的SQL语句";
+		
+	}else{
+	没有上传
+		没有图片和缩略图数据
+		$sql = "少两个字段的SQL语句";
+		
+	}
+	
+	执行SQL语句
+
+删除
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

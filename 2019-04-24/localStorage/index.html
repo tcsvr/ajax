@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地存储</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+//    if(alert(window,localStorage)) {
+//        alert('浏览器支持');
+//    }else{
+//        alert('不支持');
+//    }
+
+//语法
+//存
+// localStorage.na = 'aaa';//存的第一种
+// localStorage['b'] = 'bbb';//存的第二种
+// localStorage.setItem('c', 'ccc');//存的第三种
+
+//取
+// var a = localStorage.na;//取的第一种
+// var a = localStorage['b'];//取的第二种
+// var a = localStorage.setItem('c');//取的第三种
+
+
+// alert(localStorage.length);//数据存储长度
+// document.write(localStorage.key(0));
+// document.write(localStorage.key(1));
+// document.write(localStorage.key(2));
+// document.write(localStorage.key(3));
+// document.write(localStorage.key(4));
+for(var i=0;i<localStorage.length;i++){
+    var val = localStorage.getItem(localStorage.key(i));
+    document.write(val);
+    document.write('<br>');
+}
+
+
+</script>

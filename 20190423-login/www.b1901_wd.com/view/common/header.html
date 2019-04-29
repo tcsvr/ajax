@@ -1,0 +1,45 @@
+<header>
+			<div class="head_nav" id="head_scroll">
+				<a href="index.html">
+					<img class="logo" src="<?php echo _IMG_; ?>logo_01.png" alt="">
+				</a>
+<nav>
+<?php foreach($nav as $v){ ?>
+	<?php if($v['n_id']==$navid){ ?>
+	<a style="background:#bf4609;" href="<?php echo $v['n_link'] ?>?navid=<?php echo $v['n_id'] ?>"><?php echo $v['n_name'] ?></a>
+	<?php }else{ ?>
+	<a href="<?php echo $v['n_link'] ?>?navid=<?php echo $v['n_id'] ?>"><?php echo $v['n_name'] ?></a>
+<?php } } ?>
+
+	<!-- <a href="">登录</a> -->
+	<!-- <a href="">注册</a> -->
+	<a href="">
+		<img src="images/nav_s.png" alt="">
+	</a>
+	<a href="">退出</a>
+</nav>
+			</div>
+
+			<div class="banner">
+				<div id="con">
+	<ul>
+<!-- 遍历广告图 -->
+	<?php foreach($banner as $k=>$v){ ?>
+
+		<?php if($k==0){ ?>
+		<li><img id="img_one" src="<?php echo $v['b_img']; ?>" alt=""></li>
+		<?php }else{ ?>
+		<li><img src="<?php echo $v['b_img']; ?>" alt=""></li>
+
+	<?php } } ?>
+
+	</ul>
+					<a id="prev" href="javascript:;"><img src="images/ban_prev.png" alt=""></a>
+					<a id="next" href="javascript:;"><img src="images/ban_next.png" alt=""></a>
+					<ol>
+						
+					</ol>
+				</div>
+			</div>
+
+		</header>

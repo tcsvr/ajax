@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nav>
+    <item>
+        <n_id>1</n_id>
+        <n_name>首页</n_name>
+        <n_link>index.html</n_link>
+        <n_isshow>1</n_isshow>
+    </item>
+    <item>
+        <n_id>2</n_id>
+        <n_name>案例列表</n_name>
+        <n_link>case_list.html</n_link>
+        <n_isshow>1</n_isshow>
+    </item>
+    <item>
+        <n_id>3</n_id>
+        <n_name>关于我们</n_name>
+        <n_link>about.html</n_link>
+        <n_isshow>1</n_isshow>
+    </item>
+</nav>
